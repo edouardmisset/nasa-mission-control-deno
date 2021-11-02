@@ -1,10 +1,9 @@
-import * as log from 'https://deno.land/std@0.113.0/log/mod.ts'
-import { Application, send } from 'https://deno.land/x/oak@v9.0.1/mod.ts' // Or v5.0.0
-// import { join } from 'https://deno.land/std@0.113.0/path/mod.ts' // Or v
+import { Application, send, config, log } from './deps.ts'
 import api from './api.ts'
 
+const env = config({ safe: true })
 const app = new Application()
-const PORT = 8000
+const PORT = Number(env.PORT) || 8000
 
 await log.setup({
   handlers: {

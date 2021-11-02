@@ -75,6 +75,8 @@
   "https://deno.land/std@0.113.0/testing/_diff.ts": "ccd6c3af6e44c74bf1591acb1361995f5f50df64323a6e7fb3f16c8ea792c940",
   "https://deno.land/std@0.113.0/testing/asserts.ts": "550c71c634c608cffabf9e50520435cf03ff4bbd1db1253b0ade4debb444b131",
   "https://deno.land/std@0.113.0/textproto/mod.ts": "0549e31eacbb354b3b37951d0d24098b2cd0caaf9a6a3a67a0255d7728141522",
+  "https://deno.land/x/dotenv@v3.1.0/mod.ts": "4167efa14c671b674ebc59e4857282e4bc2c4472e41b6e3b34a1c317011e4504",
+  "https://deno.land/x/dotenv@v3.1.0/util.ts": "693730877b13f8ead2b79b2aa31e2a0652862f7dc0c5f6d2f313f4d39c7b7670",
   "https://deno.land/x/lodash@4.17.15-es/_DataView.js": "0c4811491cd0c415553118f42f9b31112ed58bdb3941358a99deec9347e7a829",
   "https://deno.land/x/lodash@4.17.15-es/_Hash.js": "7221393e8931adc88430d3badefee1568ffccf91a6efcd9dda2be498f4a09551",
   "https://deno.land/x/lodash@4.17.15-es/_LazyWrapper.js": "77e63978b95b1b1dd6d0d8c58eadeab22a58e00e50491b9dccdc285f7a7ab2d0",
