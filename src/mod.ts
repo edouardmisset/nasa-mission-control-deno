@@ -1,9 +1,13 @@
-import { Application, send, config, log } from './deps.ts'
+import { Application, send, flags, log } from './deps.ts'
 import api from './api.ts'
 
-const env = config({ safe: true })
+const argPORT = flags.parse(Deno.args).port
+console.log(argPORT)
+
 const app = new Application()
-const PORT = Number(env.PORT) || 8000
+
+const DEFAULT_PORT = 8080
+const PORT = Number(argPORT) || DEFAULT_PORT
 
 await log.setup({
   handlers: {
