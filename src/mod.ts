@@ -1,13 +1,11 @@
-import { Application, send, flags, log } from './deps.ts'
+import { Application, send, flags, log, Context } from './deps.ts'
 import api from './api.ts'
 
 const argPORT = flags.parse(Deno.args).port
-console.log(argPORT)
 
 const app = new Application()
 
-const DEFAULT_PORT = 8080
-const PORT = Number(argPORT) || DEFAULT_PORT
+const PORT = Number(argPORT) || 8080
 
 await log.setup({
   handlers: {
@@ -28,7 +26,7 @@ app.addEventListener('error', event => {
 
 // We try to execute all the next middleware in the chain
 // and if an error pops it will be caught and treated (back and front)
-app.use(async (ctx, next) => {
+app.use(async (ctx: Context, next) => {
   try {
     await next()
   } catch (err) {
@@ -39,14 +37,14 @@ app.use(async (ctx, next) => {
 })
 
 // Logger middleware
-app.use(async (ctx, next) => {
+app.use(async (ctx: Context, next): Promise<void> => {
   await next()
   const time = ctx.response.headers.get('X-Response-Time')
   log.info(`${ctx.request.method} ${ctx.request.url}: ${time}`)
 })
 
 // Performance mesuring middleware
-app.use(async (ctx, next) => {
+app.use(async (ctx: Context, next): Promise<void> => {
   const start = Date.now()
   await next()
   const delta = Date.now() - start
@@ -58,7 +56,7 @@ app.use(api.routes())
 app.use(api.allowedMethods())
 
 // Static file middleware
-app.use(async ctx => {
+app.use(async (ctx: Context): Promise<void> => {
   const filePath = ctx.request.url.pathname
   log.info(filePath)
   const fileWhitelist = [
