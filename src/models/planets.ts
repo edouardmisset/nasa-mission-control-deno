@@ -1,4 +1,4 @@
-import { parse, BufReader, join, log, _ } from '../deps.ts'
+import { _, BufReader, join, log, parse } from '../deps.ts'
 
 type Planet = Record<string, string>
 
@@ -42,8 +42,8 @@ async function loadPlanetsData() {
       'kepler_name',
       'koi_count',
       'koi_steff',
-      'koi_period'
-    )
+      'koi_period',
+    ),
   )
 }
 

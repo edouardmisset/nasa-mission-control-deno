@@ -1,4 +1,4 @@
-import { log, _ } from '../deps.ts'
+import { _, log } from '../deps.ts'
 
 const SPACE_X_API_URL = 'https://api.spacexdata.com/v3/launches'
 
@@ -29,7 +29,8 @@ async function downloadLaunchData() {
     const payloads = launch['rocket']['second_stage']['payloads']
     const customers = _.flatMap(
       payloads,
-      (payload: any) => payload['customers']
+      // deno-lint-ignore no-explicit-any
+      (payload: any) => payload['customers'],
     )
 
     const flightData = {
@@ -66,7 +67,7 @@ export function addOne(data: Launch) {
     Object.assign(data, {
       upcoming: true,
       customers: ['NASA', 'Zero To Mastery'],
-    })
+    }),
   )
 }
 
