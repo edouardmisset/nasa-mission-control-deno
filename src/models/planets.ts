@@ -23,13 +23,13 @@ export function filterHabitablePlanets(planets: Planet[]) {
 
 async function loadPlanetsData() {
   const path = join('data', 'kepler_exoplanets_nasa.csv')
-  const file = await Deno.open(path)
+  const file = await self.Deno.open(path)
   const bufReader = new BufReader(file)
   const result = await parse(bufReader, {
     skipFirstRow: true,
     comment: '#',
   })
-  Deno.close(file.rid)
+  self.Deno.close(file.rid)
 
   const planets = filterHabitablePlanets(result as Planet[])
   return planets.map(planet =>
